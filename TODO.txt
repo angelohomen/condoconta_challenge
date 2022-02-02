@@ -1,0 +1,75 @@
+1. Create a new bank account for a customer, with an initial deposit amount, where a single customer may have multiple bank 
+accounts.
+
+    Here it's going to be used POST method with customer informations and initial deposit amount, something like:
+
+    {
+        {
+            'name': name,
+            'initial_deposit': initial_deposit,
+        }
+    }
+
+    And the system will return its new ID.
+
+2. Transfer amounts between any two accounts, including those owned by different customers.
+
+    POST method too, where given arguments will be: 
+
+    {
+        {
+            'from_account_id': from_account_id,
+            'to_account_id': to_account_id
+            'transfer_value': transfer_value
+        }
+    }
+
+    Transfers will only occur with account ID (no names) to improve the system security. The system will not allow
+    transfers between same ID.
+
+3. Retrieve balances for a given account.
+
+    GET method to search by name or (the better one) account id to retrieve how much money does that account have.
+    A plus is that, when searching by name, we can see all accounts balances to one customer.
+
+4. Retrieve transfer history for a given account.
+
+    GET method to return all transfers of a given account by name or account id.
+
+================================================================================================================================
+
+MY VISION TO THIS CHALLENGE:
+
+There will be two databases:
+
+    ACCOUNTS_DATABASE - Informations database with columns of: id, name, initial_deposit, account_balance.
+    TRANSFERS_DATABASE - Informations database with columns of: transfer_id, from_account_id, to_account_id, transfer_value.
+
+I'll maintain initial_deposit fixed at ACCOUNT_DATABASE to facilitate any searching.
+
+ROUTES:
+
+    '/accounts': 
+        GET: list of all registered accounts.
+        POST: register a new account.
+
+    '/transfer': 
+        GET: list of all registered transfers.
+        POST: register a new transfer.
+
+    '/transfer/<int:account_id>':
+        GET: list of all transfers to the parameter ID.
+
+    '/transfer/<string:account_name>':
+        GET: list of all transfers to the parameter 'name'.
+
+    '/balance':
+        GET: list of all account balances by ID.
+
+    '/balance/<int:account_id>':
+        GET: account balance value.
+
+    '/balance/<string:account_name>':
+        GET: list of all accounts of same name balances.
+
+I'll not implement DELETE because a bank has to have data about every client that had account with it.
