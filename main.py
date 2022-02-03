@@ -1,4 +1,4 @@
 from src.server.instance import server
-from src.controllers.routes import *
+from src.routes import accounts, transfers, balance
 
 server.run()

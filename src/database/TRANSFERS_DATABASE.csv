@@ -7,3 +7,4 @@ transfer_id,from_id,to_id,transfer_value
 6,3,1,4452.0
 7,2,1,300.0
 8,2,4,574.0
+9,1,2,50.0
