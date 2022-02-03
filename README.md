@@ -10,6 +10,8 @@ Bank API is a system developed to simulate a bank system. It is composed by list
 - Account balance by name;
 - All of this can be returned by adding '/{information}' to the base link.
 
+To initialize it just apply command 'python main.py' and the server will start running.
+
 Here is an example: If you want to know how much money is in account with ID 4, you just want to apply GET at: http://127.0.0.1:5000/balance/4
 
 And that's it! It will return the account balance.
